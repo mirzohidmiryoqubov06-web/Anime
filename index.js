@@ -167,3 +167,14 @@ bot.on('polling_error', (error) => {
 });
 
 console.log("Telegram bot ishga tushdi va komandalarni kutmoqda...");
+
+// Render.com uchun oddiy HTTP server (Portni band qilish uchun majburiy)
+const http = require('http');
+const port = process.env.PORT || 10000;
+const server = http.createServer((req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Bot is running...\n');
+});
+server.listen(port, () => {
+    console.log(`Render HTTP server ${port}-portda ishlamoqda`);
+});
